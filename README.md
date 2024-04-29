@@ -8,8 +8,8 @@ Contributors:
 
 Deven Shrestha: https://github.com/DevenStha
 
-Nobel Baral: 
+Nobel Baral: https://github.com/NobelB07
 
 Sandesh Bastola: 
 
-Susil Neupane:
+Susil Neupane: https://github.com/susilneupane
