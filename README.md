@@ -10,6 +10,6 @@ Deven Shrestha: https://github.com/DevenStha
 
 Nobel Baral: https://github.com/NobelB07
 
-Sandesh Bastola: 
+Sandesh Bastola: https://github.com/Banstolasandesh
 
 Susil Neupane: https://github.com/susilneupane
