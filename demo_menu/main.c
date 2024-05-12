@@ -4,7 +4,7 @@
 
 int main()
 {
-    system("color 17");
+    system("color 17"); // 1 is blue 7 is white
     int choice;
     printf("\t\t\t\t\t\t\tPatient Record System");
     printf("\n\n\n\t\t\t\t----------------------------------------------------------");
@@ -24,8 +24,9 @@ int main()
     }
     else
     {
+        printf("It will now exit");
         return 3;
     }
-    getch(); //for DEV C++ last updated in 2006
+    getch(); //for DEV C++
     return 0;
 }
