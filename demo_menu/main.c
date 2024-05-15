@@ -14,7 +14,11 @@ void ask()
 void add()
 {
     char f_name[99];
+<<<<<<< HEAD
     char m_name[99] = " ";
+=======
+    char m_name[99] = {' '};
+>>>>>>> c22d5c368703b8dd34ffb74a75f5b147eb8a9190
     char l_name[99];
     int year, month, day;
     char symp[999];
@@ -42,7 +46,11 @@ void add()
 }
 void update()
 {
+<<<<<<< HEAD
     printf("Modify Data\n");
+=======
+    return "Modify data\n";
+>>>>>>> c22d5c368703b8dd34ffb74a75f5b147eb8a9190
 }
 int main()
 {
@@ -71,8 +79,13 @@ int main()
         printf("Invalid input\n");
     }
     printf("Do you want to go back?(Y/N): ");
+<<<<<<< HEAD
     scanf(" %c", &a);
     if(a == 'N' || a == 'n')
+=======
+    scanf(" %c", &n);
+    if(n == 'N' || n == 'n')
+>>>>>>> c22d5c368703b8dd34ffb74a75f5b147eb8a9190
     {
         break;
     }
