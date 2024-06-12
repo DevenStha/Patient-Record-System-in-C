@@ -1,6 +1,12 @@
 # depslib dependency file v1.0
-1717690997 source:c:\users\u\documents\demo_menu\main.c
+1718204034 source:c:\users\u\documents\demo_menu\main.c
 	<stdio.h>
 	<stdbool.h>
+	<string.h>
+
+1717736419 source:c:\users\u\documents\demo_menu\doctor.c
+	<string.h>
+
+1717736419 c:\users\u\documents\demo_menu\doctor.c
 	<string.h>
 
