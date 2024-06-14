@@ -30,6 +30,7 @@ struct patient
     char address[99];
     char symptoms[999];
     long ph;
+    int gender;
     int code;
     int status;
     int firstime;
@@ -94,6 +95,20 @@ void add(int *in) //function for adding patients
     scanf("%d", &pt[*in].month);
     printf("\nWhich day you were born in?(in numbers): ");
     scanf("%d", &pt[*in].day);
+    while(true)
+    {
+    printf("Enter patient gender: \n 1. Male \n 2. Female \n 3. Transgender\n 4. Rather not say \n ---> ");
+    scanf("%d", &pt[*in].gender);
+    if(pt[*in].gender < 1 || pt[*in].gender > 4)
+    {
+        printf("\nInvalid input!!");
+    }
+    else
+    {
+        break;
+    }
+
+    }
     }
     scanf("%c", &temp);
     printf("Enter your address: ");
@@ -109,9 +124,28 @@ void add(int *in) //function for adding patients
 void print(int *index) //print all the info on the pt[index]
 {
         pt[*index].code = *index + 1000; //for now code is index + 1000 but when file handling it will be previous user code + 1
-        printf("Info: \n\n");
+        printf("\nInfo: \n\n");
         printf("\nName: %s",pt[*index].name);
         printf("\nDate of birth: %d-%d-%d",pt[*index].year,pt[*index].month, pt[*index].day);
+        switch(pt[*index].gender)
+        {
+        case 1:
+            printf("\nGender: Male");
+            break;
+        case 2:
+            printf("\nGender: Female");
+            break;
+        case 3:
+            printf("\nGender: Transgender");
+            break;
+        case 4:
+            printf("\nNot disclosed by the patient");
+            break;
+        default:
+            printf("\nERROR");
+
+        }
+
         printf("\nAddress: %s", pt[*index].address);
         printf("\nPhone number: %ld", pt[*index].ph);
         printf("\nSymptom: %s", pt[*index].symptoms);
@@ -153,7 +187,7 @@ void print(int *index) //print all the info on the pt[index]
         }
 //        for(int i = 0; i < sizeof())
 }
-int search(int *in) //function for searching through indexes
+bool search(int *in) //function for searching through indexes
 {
     char temp;
     pt[*in].firstime = 0;
@@ -180,7 +214,7 @@ int search(int *in) //function for searching through indexes
     else
     {
         print(&*in); //call print() for saving time
-        return 1; //return 1 for use for future
+        return true; //return 1 for use for future
     }
 }
 void modify()
@@ -188,7 +222,7 @@ void modify()
     int in;
     char temp;
     int tmp;
-    if(search(&in) == 1) //future use is here it means code is found
+    if(search(&in) == true) //future use is here it means code is found
     {
         printf("\n\nDo you want to modify the data?\n1.Yes\n2.No\n---> ");
         scanf("%d", &tmp);
@@ -201,20 +235,34 @@ void modify()
     scanf("%[^\n]s", &pt[in].name);
     printf("\nNew year(DOB): ");
     //scanf("%d", &tmp);
-    scanf("%[^\n]d", &pt[in].year);
+    scanf("%d", &pt[in].year);
     printf("\nNew month(DOB): ");
     //scanf("%d", &tmp);
-    scanf("%[^\n]d", &pt[in].month);
+    scanf("%d", &pt[in].month);
     printf("\nNew date(DOB): ");
     //scanf("%d", &tmp);
-    scanf("%[^\n]d", &pt[in].day);
-    printf("New address: ");
+    scanf("%d", &pt[in].day);
+    printf("\nNew address: ");
     scanf("%c", &temp);
     scanf("%[^\n]s", &pt[in].address);
-    printf("New phone number: ");
+    while(true)
+    {
+    printf("Enter gender: \n 1. Male \n 2. Female \n 3. Transgender\n4. Rather not say \n ---> ");
+    scanf("%d", &pt[in].gender);
+    if(pt[in].gender < 1 || pt[in].gender > 4)
+    {
+        printf("\nInvalid status!!");
+    }
+    else
+    {
+        break;
+    }
+
+    }
+    printf("\nNew phone number: ");
     //scanf("%d", &tmp);
-    scanf("%[^\n]ld", &pt[in].ph);
-    printf("Newer/updated symptom: ");
+    scanf("%ld", &pt[in].ph);
+    printf("\nNewer/updated symptom: ");
     scanf("%c", &temp);
     scanf("%[^\n]s", &pt[in].symptoms);
     while(true)
