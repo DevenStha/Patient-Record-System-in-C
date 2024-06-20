@@ -10,3 +10,31 @@
 1717736419 c:\users\u\documents\demo_menu\doctor.c
 	<string.h>
 
+1718878570 source:d:\patient-record-system-in-c\demo_menu\doctor.c
+	<string.h>
+
+1718878570 source:d:\patient-record-system-in-c\demo_menu\main.c
+	<stdio.h>
+	<stdbool.h>
+	<string.h>
+
+1718902204 source:d:\demo_menu\main.c
+	<stdio.h>
+	<stdbool.h>
+	<string.h>
+	"user.h"
+	"doctors.h"
+	"fileprint.h"
+	"add-and-print.h"
+	"search-n-modify.h"
+
+1718898890 d:\demo_menu\user.h
+
+1718902058 d:\demo_menu\doctors.h
+
+1718902155 d:\demo_menu\add-and-print.h
+
+1718901851 d:\demo_menu\search-n-modify.h
+
+1718902107 d:\demo_menu\fileprint.h
+

@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-//#include "doctor.c"
 #define physician "Deven Shrestha"
+#include "user.h"
+#include "doctors.h"
+#include "fileprint.h"
+#include "add-and-print.h"
+#include "search-n-modify.h"
+
 void ask() //print the interface
 {
     printf("\t\t\t\t\t\t\tPatient Record System");
@@ -20,266 +25,6 @@ void instructions() //instructions
 {
     printf("\n1. Enter the values as asked by the program.");
     printf("\n2. Fill ALL the forms");
-}
-struct patient
-{
-    char name[99];
-    int year;
-    int month;
-    int day;
-    char address[99];
-    char symptoms[999];
-    long ph;
-    int gender;
-    int code;
-    int status;
-    int firstime;
-}pt[9999]; //patient structure list
-
-struct doctor //doctor
-{
-    char special[99][99];// = {"cough", "headache", "physician", "chest pain", "eye"};
-    char person[99][99];// = {"Shital Dhaka", "Kaushal Shrestha", "Ramesh Chalise", "Anil Sharma", "Safal Thapa"};
-    int nmc[99];// = {1000, 1001, 1002, 1003, 1004};
-    int age[99];
-    long ph[99];// = {987372892, 39298372, 3892738, 1628792, 78372};
-}d;
-void add(int *in) //function for adding patients
-{
-
-    int temp = -1;
-    //int size = sizeof(struct patient);
-    while(true)
-    {
-        printf("\nHas the patient been to our hospital before?: \n1.Yes \n2.No\n----> ");
-        scanf("%d", &pt[*in].firstime);
-        if(pt[*in].firstime == 1)
-        {
-            int temp1;
-            int n;
-            printf("Enter patient code while he/she were in our hospital: ");
-            scanf("%d", &temp1);
-            for(n = 0; n < 9999; n++)
-            {
-            if(temp1 == pt[n].code) //search through every index for matching code
-            {
-                //printf("The code doesn't exist!\n");
-                //printf("Try Again\n");
-                printf("Code found!!\n");
-                //temp = 1;
-                temp = n;
-                break;
-            }
-        }
-        if(temp != -1)
-        {
-            *in = temp;
-            break;
-        }
-        printf("\nCode not found!?\n Make sure to type the right code next time!!\n");
-        }
-        else
-        {
-            printf("\nNo?, Then enter as specified below:\n\n");
-            break;
-        }
-        }
-    if(temp == -1)
-    {
-    printf("\nEnter the full name of the Patient: ", in + 1);
-    scanf("%c", &temp);
-    scanf("%[^\n]s", &pt[*in].name);
-    printf("\nWhich year you were born in?(in numbers): ");
-    scanf("%d", &pt[*in].year);
-    printf("\nWhich month you were born in?(in numbers): ");
-    scanf("%d", &pt[*in].month);
-    printf("\nWhich day you were born in?(in numbers): ");
-    scanf("%d", &pt[*in].day);
-    while(true)
-    {
-    printf("Enter patient gender: \n 1. Male \n 2. Female \n 3. Transgender\n 4. Rather not say \n ---> ");
-    scanf("%d", &pt[*in].gender);
-    if(pt[*in].gender < 1 || pt[*in].gender > 4)
-    {
-        printf("\nInvalid input!!");
-    }
-    else
-    {
-        break;
-    }
-
-    }
-    }
-    scanf("%c", &temp);
-    printf("Enter your address: ");
-    scanf("%[^\n]s", &pt[*in].address);
-    printf("Enter your phone number: ");
-    scanf("%ld", &pt[*in].ph);
-    scanf("%c", &temp);
-    printf("Enter your symptom: ");
-    scanf("%[^\n]s", &pt[*in].symptoms);
-    pt[*in].status = 1;
-    printf("Patient status: Ongoing treatment");
-}
-void print(int *index) //print all the info on the pt[index]
-{
-        pt[*index].code = *index + 1000; //for now code is index + 1000 but when file handling it will be previous user code + 1
-        printf("\nInfo: \n\n");
-        printf("\nName: %s",pt[*index].name);
-        printf("\nDate of birth: %d-%d-%d",pt[*index].year,pt[*index].month, pt[*index].day);
-        switch(pt[*index].gender)
-        {
-        case 1:
-            printf("\nGender: Male");
-            break;
-        case 2:
-            printf("\nGender: Female");
-            break;
-        case 3:
-            printf("\nGender: Transgender");
-            break;
-        case 4:
-            printf("\nNot disclosed by the patient");
-            break;
-        default:
-            printf("\nERROR");
-
-        }
-
-        printf("\nAddress: %s", pt[*index].address);
-        printf("\nPhone number: %ld", pt[*index].ph);
-        printf("\nSymptom: %s", pt[*index].symptoms);
-        for(int i = 0; i < 100; ++i)
-        {
-            if(strcmp(pt[*index].symptoms, d.special[i]) == 0)
-            {
-                printf("\nFor your symptoms you may refer to these doctors: ");
-                printf("\nName: %s", d.person[i]);
-                printf("\nAge: %d", d.age[i]);
-                printf("\nNMC: %d", d.nmc[i]);
-                break;
-            }
-            else if(i == 99)
-            {
-                printf("\nWe didn't find any one so please refer to our physician: ");
-                printf("%s", physician);
-            }
-        }
-        printf("\nPatient status: ");
-        switch(pt[*index].status)
-        {
-        case 1:
-            printf("Ongoing Treatment");
-            break;
-        case 2:
-            printf("Transferred");
-            break;
-        case 3:
-            printf("Cured");
-            break;
-        default:
-            printf("Unknown Status!?");
-        }
-        printf("\nYour code is %d", pt[*index].code);
-        if(pt[*index].firstime == 2) //for adding
-        {
-            ++*index;
-        }
-//        for(int i = 0; i < sizeof())
-}
-bool search(int *in) //function for searching through indexes
-{
-    char temp;
-    pt[*in].firstime = 0;
-    int tmp;
-    printf("Please enter the patient's code: ");
-    scanf("%d", &*in);
-    *in = *in - 1000;
-    if(*in < 0)
-    {
-        printf("Patient code less than 1000 doesn't exist.\n");
-    }
-    for(int n = 0; n < 9999; n++)
-    {
-        if(pt[n].code - 1000 == *in)
-        {
-            tmp = 1;
-            break;
-        }
-    }
-    if(tmp != 1)
-    {
-        printf("Code not found!");
-    }
-    else
-    {
-        print(&*in); //call print() for saving time
-        return true; //return 1 for use for future
-    }
-}
-void modify()
-{
-    int in;
-    char temp;
-    int tmp;
-    if(search(&in) == true) //future use is here it means code is found
-    {
-        printf("\n\nDo you want to modify the data?\n1.Yes\n2.No\n---> ");
-        scanf("%d", &tmp);
-    }
-    if(tmp == 1)
-    {
-    printf("\n\nInfo: Enter Ctrl + C where you don't want to make any changes\n\n");
-    printf("\nNew name: ");
-    scanf("%c", &temp);
-    scanf("%[^\n]s", &pt[in].name);
-    printf("\nNew year(DOB): ");
-    //scanf("%d", &tmp);
-    scanf("%d", &pt[in].year);
-    printf("\nNew month(DOB): ");
-    //scanf("%d", &tmp);
-    scanf("%d", &pt[in].month);
-    printf("\nNew date(DOB): ");
-    //scanf("%d", &tmp);
-    scanf("%d", &pt[in].day);
-    printf("\nNew address: ");
-    scanf("%c", &temp);
-    scanf("%[^\n]s", &pt[in].address);
-    while(true)
-    {
-    printf("Enter gender: \n 1. Male \n 2. Female \n 3. Transgender\n4. Rather not say \n ---> ");
-    scanf("%d", &pt[in].gender);
-    if(pt[in].gender < 1 || pt[in].gender > 4)
-    {
-        printf("\nInvalid status!!");
-    }
-    else
-    {
-        break;
-    }
-
-    }
-    printf("\nNew phone number: ");
-    //scanf("%d", &tmp);
-    scanf("%ld", &pt[in].ph);
-    printf("\nNewer/updated symptom: ");
-    scanf("%c", &temp);
-    scanf("%[^\n]s", &pt[in].symptoms);
-    while(true)
-    {
-    printf("Is the patient ongoing treatment, transferred or cured?: \n 1. Ongoing \n 2. Transferred \n 3. Cured\n ---> ");
-    scanf("%d", &pt[in].status);
-    if(pt[in].status < 1 || pt[in].status > 3)
-    {
-        printf("\nInvalid status!!");
-    }
-    else
-    {
-        break;
-    }
-    }
-    print(&in);
-    }
 }
 /*void suggestion()
 {
@@ -335,20 +80,28 @@ int main()
             }
             if(strcmp(pass, passwd) == 0 && strcmp(admin, asku) == 0)
             {
+                FILE *fp;
+                fp = fopen("doctor.txt", "a+");
                 printf("\nAccess granted!");
+                /*while(fscanf(fp, "\n%s %s %d %d %ld", d[dindex].person, d[dindex].special, &d[dindex].age, &d[dindex].nmc, &d[dindex].ph))
+                {
+
+                }*/
                 printf("\nEnter doctor name: ");
                 scanf("%c", &temp);
-                scanf("%[^\n]s", &d.person[dindex]);
+                scanf("%[^\n]s", &d[dindex].person);
                 printf("\nEnter his/her speciality: ");
                 scanf("%c", &temp);
-                scanf("%[^\n]s", &d.special[dindex]);
+                scanf("%[^\n]s", &d[dindex].special);
                 printf("Enter doctor's age: ");
-                scanf("%d", &d.age[dindex]);
+                scanf("%d", &d[dindex].age);
                 printf("\nEnter doctor NRN number: ");
-                scanf("%d", &d.nmc[dindex]);
+                scanf("%d", &d[dindex].nmc);
                 printf("\nEnter doctor phone number: ");
-                scanf("%ld", &d.ph[dindex]);
+                scanf("%ld", &d[dindex].ph);
+                fprintf(fp, "\n%s %s %d %d %ld", d[dindex].person, d[dindex].special, d[dindex].age, d[dindex].nmc, d[dindex].ph);
                 ++dindex;
+                fclose(fp);
             }
             else
             {
