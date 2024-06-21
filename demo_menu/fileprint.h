@@ -80,4 +80,14 @@ void fileprint(int code)
             }
 }
 
+
+void fileprintd(int findex)
+{
+    printf("\n\nDOCTOR NUMBER %d", findex + 1);
+    printf("\nDoctor name: %s", td.person);
+    printf("\nDoctor speciality: %s", td.special);
+    printf("\nDoctor age: %d", td.age);
+    printf("\nDoctor NRN num: %d", td.nmc);
+    printf("\nDoctor Phone number: %ld", td.ph);
+}
 #endif // FILEPRINT_H_INCLUDED

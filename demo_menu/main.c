@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
 #define physician "Deven Shrestha"
 #include "user.h"
 #include "doctors.h"
@@ -35,6 +36,7 @@ int main()
 {
     int index = 0;
     int dindex = 0; //indexing but for adding doctor(admin)
+    int findex = 0;
     int save;
     char admin[6] = "admin";
     char asku[6];
@@ -83,16 +85,24 @@ int main()
                 FILE *fp;
                 fp = fopen("doctor.txt", "a+");
                 printf("\nAccess granted!");
-                /*while(fscanf(fp, "\n%s %s %d %d %ld", d[dindex].person, d[dindex].special, &d[dindex].age, &d[dindex].nmc, &d[dindex].ph))
+                printf("\n-------DOCTOR LIST---------");
+                while(fscanf(fp, "\n%s %s %d %d %ld", td.person, td.special, &td.age,
+                             &td.nmc, &td.ph) != EOF)
                 {
-
-                }*/
+                    fileprintd(findex);
+                    ++findex;
+                }
+                int e;
+                printf("\nDo you want to add new doctor?\n\n1.Yes\n2.No\n--> : ");
+                scanf("%d", &e);
+                if(e == 1)
+                {
                 printf("\nEnter doctor name: ");
                 scanf("%c", &temp);
-                scanf("%[^\n]s", &d[dindex].person);
+                scanf("%[^\n]s", d[dindex].person);
                 printf("\nEnter his/her speciality: ");
                 scanf("%c", &temp);
-                scanf("%[^\n]s", &d[dindex].special);
+                scanf("%[^\n]s", d[dindex].special);
                 printf("Enter doctor's age: ");
                 scanf("%d", &d[dindex].age);
                 printf("\nEnter doctor NRN number: ");
@@ -101,6 +111,11 @@ int main()
                 scanf("%ld", &d[dindex].ph);
                 fprintf(fp, "\n%s %s %d %d %ld", d[dindex].person, d[dindex].special, d[dindex].age, d[dindex].nmc, d[dindex].ph);
                 ++dindex;
+                }
+                else
+                {
+                    break;
+                }
                 fclose(fp);
             }
             else
@@ -126,5 +141,5 @@ int main()
             break;
         }
     }
-    return 0;
+   return 0;
 }

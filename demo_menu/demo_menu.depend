@@ -18,10 +18,11 @@
 	<stdbool.h>
 	<string.h>
 
-1718902204 source:d:\demo_menu\main.c
+1718944656 source:d:\demo_menu\main.c
 	<stdio.h>
 	<stdbool.h>
 	<string.h>
+	<stdlib.h>
 	"user.h"
 	"doctors.h"
 	"fileprint.h"
@@ -30,11 +31,11 @@
 
 1718898890 d:\demo_menu\user.h
 
-1718902058 d:\demo_menu\doctors.h
+1718942891 d:\demo_menu\doctors.h
 
-1718902155 d:\demo_menu\add-and-print.h
+1718944679 d:\demo_menu\add-and-print.h
 
 1718901851 d:\demo_menu\search-n-modify.h
 
-1718902107 d:\demo_menu\fileprint.h
+1718943404 d:\demo_menu\fileprint.h
 

@@ -11,8 +11,6 @@ void add(int *in) //function for adding patients
     }
     int temp = -1;
     //int size = sizeof(struct patient);
-    while(true)
-    {
         printf("\nHas the patient been to our hospital before?: \n1.Yes \n2.No\n----> ");
         scanf("%d", &pt[*in].firstime);
         if(pt[*in].firstime == 1)
@@ -21,7 +19,25 @@ void add(int *in) //function for adding patients
             int n;
             printf("Enter patient code while he/she were in our hospital: ");
             scanf("%d", &temp1);
-            for(n = 0; n < 9999; n++)
+            while(fscanf(fp, "\n%s %s %s %d %d %d %s %s %ld %d %d %d %d", tmp.name, tmp.mname, tmp.lname, &tmp.year,
+            &tmp.month, &tmp.day, tmp.address, tmp.symptoms, &tmp.ph, &tmp.gender,
+            &tmp.code, &tmp.status, &tmp.firstime) != EOF)
+            {
+                if(temp1 == tmp.code)
+                {
+                    printf("Code found!!");
+                    fileprint(tmp.code);
+                    temp = 0;
+                    break;
+                }
+            }
+                        if(temp == -1)
+            {
+                printf("\nWrong code! The program will now exit.");
+                exit(-1);
+            }
+        }
+            /*for(n = 0; n < 9999; n++)
             {
             if(temp1 == pt[n].code) //search through every index for matching code
             {
@@ -45,7 +61,7 @@ void add(int *in) //function for adding patients
             printf("\nNo?, Then enter as specified below:\n\n");
             break;
         }
-        }
+        }*/
     if(temp == -1)
     {
     printf("\nEnter the first name of the Patient: ");
@@ -79,7 +95,7 @@ void add(int *in) //function for adding patients
     }
     }
     scanf("%c", &temp);
-    printf("Enter your address: ");
+    printf("\nEnter your address: ");
     scanf("%[^\n]s", &pt[*in].address);
     printf("Enter your phone number: ");
     scanf("%ld", &pt[*in].ph);
