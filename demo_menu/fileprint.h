@@ -6,7 +6,7 @@ void fileprint(int code)
         //tmp.code = *index + 1000; //for now code is index + 1000 but when file handling it will be previous user code + 1
            FILE *fp;
            fp = fopen("patient.txt", "a+");
-           while(fscanf(fp, "\n%s %s %s %d %d %d %s %s %ld %d %d %d %d", tmp.name, tmp.mname, tmp.lname, &tmp.year,
+           while(fscanf(fp, "%s %s %s %d %d %d %s %s %ld %d %d %d %d\n", tmp.name, tmp.mname, tmp.lname, &tmp.year,
             &tmp.month, &tmp.day, tmp.address, tmp.symptoms, &tmp.ph, &tmp.gender,
             &tmp.code, &tmp.status, &tmp.firstime) != EOF)
             {

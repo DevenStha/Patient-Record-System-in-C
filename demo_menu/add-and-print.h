@@ -11,7 +11,7 @@ void add(int *in) //function for adding patients
     }
     int temp = -1;
     //int size = sizeof(struct patient);
-        printf("\nHas the patient been to our hospital before?: \n1.Yes \n2.No\n----> ");
+        printf("\nHas the patient been to our hospital before?:(Enter 1 for Yes, 2 for No) \n1.Yes \n2.No\n----> ");
         scanf("%d", &pt[*in].firstime);
         if(pt[*in].firstime == 1)
         {
@@ -19,7 +19,7 @@ void add(int *in) //function for adding patients
             int n;
             printf("Enter patient code while he/she were in our hospital: ");
             scanf("%d", &temp1);
-            while(fscanf(fp, "\n%s %s %s %d %d %d %s %s %ld %d %d %d %d", tmp.name, tmp.mname, tmp.lname, &tmp.year,
+            while(fscanf(fp, "%s %s %s %d %d %d %s %s %ld %d %d %d %d\n", tmp.name, tmp.mname, tmp.lname, &tmp.year,
             &tmp.month, &tmp.day, tmp.address, tmp.symptoms, &tmp.ph, &tmp.gender,
             &tmp.code, &tmp.status, &tmp.firstime) != EOF)
             {
@@ -81,7 +81,7 @@ void add(int *in) //function for adding patients
     scanf("%d", &pt[*in].day);
     while(true)
     {
-    printf("Enter patient gender: \n 1. Male \n 2. Female \n 3. Transgender\n 4. Rather not say \n ---> ");
+    printf("Enter patient gender:(Enter 1 for Male, 2 for Female, 3 for Transgender and 4 for Rather not say) \n 1. Male \n 2. Female \n 3. Transgender\n 4. Rather not say \n ---> ");
     scanf("%d", &pt[*in].gender);
     if(pt[*in].gender < 1 || pt[*in].gender > 4)
     {
@@ -104,7 +104,7 @@ void add(int *in) //function for adding patients
     scanf("%[^\n]s", &pt[*in].symptoms);
     pt[*in].status = 1;
     printf("Patient status: Ongoing treatment");
-   while(fscanf(fp, "\n%s %s %s %d %d %d %s %s %ld %d %d %d %d", tmp.name, tmp.mname, tmp.lname, &tmp.year,
+   while(fscanf(fp, "%s %s %s %d %d %d %s %s %ld %d %d %d %d\n", tmp.name, tmp.mname, tmp.lname, &tmp.year,
             &tmp.month, &tmp.day, tmp.address, tmp.symptoms, &tmp.ph, &tmp.gender,
             &tmp.code, &tmp.status, &tmp.firstime) != EOF)
             {

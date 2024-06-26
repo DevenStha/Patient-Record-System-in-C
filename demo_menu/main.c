@@ -5,6 +5,7 @@
 #define physician "Deven Shrestha"
 #include "user.h"
 #include "doctors.h"
+#include "fileread.h"
 #include "fileprint.h"
 #include "add-and-print.h"
 #include "search-n-modify.h"
@@ -48,6 +49,7 @@ int main()
     char pass[9];
     char passwd[9] = "admin123"; //9 indexes for 8 char password because garbage value at end
     system("color 17");
+    printf("Code: %d", pt[2].code);
     while(true)
     {
         ask();
@@ -67,6 +69,7 @@ int main()
             //++index;
             break;
         case 2:
+            fileread();
             modify();
             break;
         case 3:
@@ -86,14 +89,14 @@ int main()
                 fp = fopen("doctor.txt", "a+");
                 printf("\nAccess granted!");
                 printf("\n-------DOCTOR LIST---------");
-                while(fscanf(fp, "\n%s %s %d %d %ld", td.person, td.special, &td.age,
+                while(fscanf(fp, "%s %s %d %d %ld\n", td.person, td.special, &td.age,
                              &td.nmc, &td.ph) != EOF)
                 {
                     fileprintd(findex);
                     ++findex;
                 }
                 int e;
-                printf("\nDo you want to add new doctor?\n\n1.Yes\n2.No\n--> : ");
+                printf("\nDo you want to add new doctor?(Enter 1 for Yes, 2 for No)\n\n1.Yes\n2.No\n--> : ");
                 scanf("%d", &e);
                 if(e == 1)
                 {
@@ -134,7 +137,7 @@ int main()
             printf("Enter a valid choice: ");
             //index;
         }
-        printf("\n\nDo you want to exit?\n\n1. Yes\n2. No: \n----> ");
+        printf("\n\nDo you want to exit? (Enter 1 for Yes, 2 for No)\n\n1. Yes\n2. No: \n----> ");
         scanf("%d", &confirm);
         if(confirm != 2)
         {

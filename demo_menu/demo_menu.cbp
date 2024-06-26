@@ -34,6 +34,7 @@
 		<Unit filename="add-and-print.h" />
 		<Unit filename="doctors.h" />
 		<Unit filename="fileprint.h" />
+		<Unit filename="fileread.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
