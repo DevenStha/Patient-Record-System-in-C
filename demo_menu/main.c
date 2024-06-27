@@ -8,6 +8,8 @@
 #include "fileread.h"
 #include "fileprint.h"
 #include "filewrite.h"
+#include "doctable.h"
+//#include "printdoc.h"
 #include "add-and-print.h"
 #include "search-n-modify.h"
 
@@ -70,6 +72,7 @@ int main()
         switch(i)
         {
         case 1:
+            printdoc();
             save = index; //save initial index value because it will change quite a lot in add or print functions as the address is passed
             index = save;
             fileread();
@@ -80,6 +83,7 @@ int main()
             //++index;
             break;
         case 2:
+            printdoc();
             fileread();
             modify();
             break;
@@ -96,16 +100,17 @@ int main()
             }
             if(strcmp(pass, passwd) == 0 && strcmp(admin, asku) == 0)
             {
+                printdoc();
                 FILE *fp;
                 fp = fopen("doctor.txt", "a+");
                 printf("\nAccess granted!");
-                printf("\n-------DOCTOR LIST---------");
+                /*printf("\n-------DOCTOR LIST---------");
                 while(fscanf(fp, "%s %s %d %d %ld\n", td.person, td.special, &td.age,
                              &td.nmc, &td.ph) != EOF)
                 {
                     fileprintd(findex);
                     ++findex;
-                }
+                }*/
                 int e;
                 printf("\nDo you want to add new doctor?(Enter 1 for Yes, 2 for No)\n\n1.Yes\n2.No\n--> : ");
                 scanf("%d", &e);

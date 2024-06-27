@@ -18,7 +18,7 @@
 	<stdbool.h>
 	<string.h>
 
-1719502736 source:d:\demo_menu\main.c
+1719508523 source:d:\demo_menu\main.c
 	<stdio.h>
 	<stdbool.h>
 	<string.h>
@@ -28,6 +28,7 @@
 	"fileread.h"
 	"fileprint.h"
 	"filewrite.h"
+	"doctable.h"
 	"add-and-print.h"
 	"search-n-modify.h"
 
@@ -41,7 +42,9 @@
 
 1719500894 d:\demo_menu\fileprint.h
 
-1719491110 d:\demo_menu\fileread.h
+1719506473 d:\demo_menu\fileread.h
 
 1719501514 d:\demo_menu\filewrite.h
+
+1719508357 d:\demo_menu\doctable.h
 

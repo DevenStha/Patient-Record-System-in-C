@@ -15,7 +15,7 @@ void fileread()
         i++;
         tmp.code = pt[i-1].code + 1; //for incrementing the code by one while adding new user
     }
-    while(fscanf(fp1, "\n%s %s %d %d %ld", d[j].person, d[j].special, &d[j].age, &d[j].nmc, &d[j].ph) != EOF)
+    while(fscanf(fp1, "%s %s %d %d %ld\n", d[j].person, d[j].special, &d[j].age, &d[j].nmc, &d[j].ph) != EOF)
     {
         j++;
     }
