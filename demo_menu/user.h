@@ -10,8 +10,8 @@ struct patient
     int month;
     int day;
     char address[99];
-    char symptoms[999];
     long ph;
+    char symptoms[999];
     int gender;
     int code;
     int status;

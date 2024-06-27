@@ -7,11 +7,21 @@
 #include "doctors.h"
 #include "fileread.h"
 #include "fileprint.h"
+#include "filewrite.h"
 #include "add-and-print.h"
 #include "search-n-modify.h"
 
+void red()
+{
+    system("color 47");
+}
+void blue()
+{
+    system("color 17");
+}
 void ask() //print the interface
 {
+    blue();
     printf("\t\t\t\t\t\t\tPatient Record System");
     printf("\n\n\n\t\t\t\t----------------------------------------------------------");
     printf("\n\t\t\t\t\t\t\t User Choice");
@@ -48,8 +58,6 @@ int main()
     char temp;
     char pass[9];
     char passwd[9] = "admin123"; //9 indexes for 8 char password because garbage value at end
-    system("color 17");
-    printf("Code: %d", pt[2].code);
     while(true)
     {
         ask();
@@ -64,8 +72,11 @@ int main()
         case 1:
             save = index; //save initial index value because it will change quite a lot in add or print functions as the address is passed
             index = save;
-            add(&index);
-            print(&index);
+            fileread();
+            //add();
+            if(add() == 2)
+                print(&index);
+            fileread();
             //++index;
             break;
         case 2:
@@ -134,7 +145,8 @@ int main()
         case 5:
             return 0;
         default:
-            printf("Enter a valid choice: ");
+            red();
+            printf("Enter a valid choice!!!: ");
             //index;
         }
         printf("\n\nDo you want to exit? (Enter 1 for Yes, 2 for No)\n\n1. Yes\n2. No: \n----> ");
