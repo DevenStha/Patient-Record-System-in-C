@@ -25,16 +25,17 @@ void modify(int rm) //if rm is 1 it will remove the specified data
     //fp = ("patient.txt", "r");
     for(int i = 0; i < 9999; i++)
 {
-            if(pt[i].code == code && pt[i].code > 0 || strcmp(pt[i].ph, ph) == 0 && pt[i].code > 0){
+            if(pt[i].code == code && pt[i].status > 0 || strcmp(pt[i].ph, ph) == 0 && pt[i].status > 0){
+                tmp = 1;
+                in = i;
+                fileprint(i);
                 if(rm == 1)
                 {
+                    printf("\nThat data is gone now.\n");
                     rmpatient(i);
                     filewrite();
                     return; //return void for void
                 }
-                tmp = 1;
-                in = i;
-                fileprint(i);
                 //fclose(fp);
                 break;
                 //return true;

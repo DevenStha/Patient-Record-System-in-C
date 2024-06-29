@@ -42,7 +42,7 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="printdoc.h" />
+		<Unit filename="modifydoc.h" />
 		<Unit filename="pwd.h" />
 		<Unit filename="remove.h" />
 		<Unit filename="rmspace.h" />

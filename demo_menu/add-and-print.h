@@ -30,7 +30,7 @@ int add() //function for adding patients
             scanf("%d", &temp1);
             for(i = 0; i < 9999; i++)
             {
-                if(pt[i].code == temp1 && temp1 != -1)
+                if(pt[i].code == temp1 && temp1 != -1 && pt[i].status != 0)
                 {
                     printf("\nCode Found!!!");
                     fileprint(i);

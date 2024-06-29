@@ -13,7 +13,6 @@ void rmpatient(int i)
     strcpy(pt[i].ph, "rm");
     strcpy(pt[i].symptoms, "rm");
     pt[i].gender = 0;
-    pt[i].code = -1;
     pt[i].status = 0;
     pt[i].firstime = 0;
 }
@@ -24,7 +23,8 @@ void rmdoc(int i)
     strcpy(d[i].fname ,"rm");
     strcpy(d[i].mname ,"rm");
     strcpy(d[i].lname ,"rm");// = {"Shital Dhaka", "Kaushal Shrestha", "Ramesh Chalise", "Anil Sharma", "Safal Thapa"};
-    d[i].nmc;// = {1000, 1001, 1002, 1003, 1004};
+    d[i].nmc = -1;// = {1000, 1001, 1002, 1003, 1004};
     strcpy(d[i].docfree ,"rm");
+    d[i].occupied = 1;
 }
 #endif // REMOVE_H_INCLUDED

@@ -105,11 +105,11 @@ void fileprintd(int i)
     printf("\nDoctor occupied: ");
     if(d[i].occupied == 1)
     {
-        printf("Yes");
+        printf("Yes\n");
     }
     else
     {
-        printf("No");
+        printf("No\n");
     }
 }
 #endif // FILEPRINT_H_INCLUDED

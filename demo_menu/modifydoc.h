@@ -1,7 +1,7 @@
 #ifndef MODIFYDOC_H_INCLUDED
 #define MODIFYDOC_H_INCLUDED
 
-void modifydoc()
+void modifydoc(int rm)
 {
     int docnmc;
     int i;
@@ -9,7 +9,7 @@ void modifydoc()
     int found = -1;
     printf("\nEnter doctor's NMC number: ");
     scanf("%d", &docnmc);
-    for(int a = 0; a < 999; a++)
+    for(int a = 0; a < 999 && docnmc > -1; a++)
     {
         if(docnmc == d[a].nmc && docnmc > 0)
         {
@@ -18,6 +18,12 @@ void modifydoc()
             printf("\nHere is the information: ");
             fileprintd(a);
             int mod;
+            if(rm == 1)
+            {
+                rmdoc(a);
+                filedwrite();
+                return;
+            }
             printf("Do you want to modify the data?(1 for Yes, 2 for No)\n1.Yes\n2.No\n--> ");
             scanf("%d", &mod);
             i = a;

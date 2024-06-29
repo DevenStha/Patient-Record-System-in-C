@@ -1,6 +1,5 @@
-skipped skipped Neupane 1234 anesthetic  0
+skipped skipped Neupane 1234 anesthetic 0 0
 deven skipped shrestha 3456 headache 10:56-22:34[Sun-Wed] 0
 Nobel skipped Baral 345 stomache 10:00-13:32[Wed] 0
-Kaushal Babu Shrestha 23456 back-pain 03:34-23:59[Sun-Sat] 0
-Shital Paran Dhakal 643 vomiting 13:00-14:00[Fri] 0
-Anil Singh Sharma 4552 diarhhea 13:00-19:00[Sun,-Tue,-Fri] 0
+rm rm rm -1 rm rm 1
+Anil Singh Sharma 4552 diarhhea 13:00-19:00[Sun,-Tue,-Fri] 2

@@ -102,10 +102,10 @@ int main()
         switch(i)
         {
         case 1:
-            printdoc();
             save = index; //save initial index value because it will change quite a lot in add or print functions as the address is passed
             index = save;
             fileread();
+            printdoc();
             //add();
             if(add() == 2)
                 print(&index);
@@ -145,7 +145,6 @@ int main()
                 {
                 access = 1;
                 //system("clear");
-                printf("\nAccess granted!");
                 askadmin();
                 printf("\nEnter your choice here:\n---> ");
                 scanf("%d", &i);
@@ -178,8 +177,18 @@ int main()
                 {
                     strcpy(td.lname, "skipped");
                 }
+                while(true)
+                {
                 printf("\nEnter doctor NMC number: ");
                 scanf("%d", &td.nmc);
+                if(td.nmc > -1)
+                {
+                    break;
+                }
+                else
+                {
+                    printf("\nNMC CAN'T BE LESS THAN ZERO\n");
+                }
                 printf("Enter doctor's speciality: ");
                 scanf("%c", &temp);
                 scanf("%[^\n]s", td.special);
@@ -202,8 +211,8 @@ int main()
                 fclose(fp);
                 break;
                 case 2:
-                    printdoc();
                     fileread();
+                    printdoc();
                     modify(0);
                     break;
                 case 3:
@@ -211,10 +220,15 @@ int main()
                     break;
                 case 4:
                     fileread();
-                    modifydoc();
+                    modifydoc(0);
                     break;
                 case 5:
+                    fileread();
                     modify(1);
+                    break;
+                case 6:
+                    fileread();
+                    modifydoc(1);
                     break;
                 case 8:
                     printdoc();
@@ -231,6 +245,7 @@ int main()
                 }
                 }
                 //fclose(fp);
+            }
             }
             else
             {
