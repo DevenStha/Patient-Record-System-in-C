@@ -16,6 +16,8 @@
 #include "pwd.h"
 #include "remove.h"
 #include "rmspace.h"
+#include "modifydoc.h"
+
 void red()
 {
     system("color 07"); //originally red but it was a eyesore so changed it to black
@@ -40,8 +42,7 @@ void ask() //print the interface
 void instructions() //instructions
 {
     printf("\n1. Enter the values as asked by the program.");
-    printf("\n2. Fill ALL the forms");
-    printf("\n3. For string prompts you can skip the values by pressing enter!");
+    printf("\n2. For string prompts you can skip the values by pressing enter!");
 }
 
 void askadmin()
@@ -57,7 +58,8 @@ void askadmin()
     printf("\n\t\t\t\t5. Remove patient from the database: ");
     printf("\n\t\t\t\t6. Remove doctor from the database: ");
     printf("\n\t\t\t\t7. Instructions");
-    printf("\n\t\t\t\t8. Exit\n ---> ");
+    printf("\n\t\t\t\t8. View list of doctors: ");
+    printf("\n\t\t\t\t9. Exit\n ---> ");
     printf("\t\t\t\tDoctors' List: ");
 }
 /*void suggestion()
@@ -85,7 +87,7 @@ int main()
     char temp;
     char pass[99] = "tempp123";
     char passwd[99];
-    //char mp[]
+    char mp[99] = "";
     strcpy(passwd, ad.pwd);
     int access = 0;//9 indexes for 8 char password because garbage value at end
     while(true)
@@ -133,10 +135,8 @@ int main()
                 c++; //++
                 printf("*"); //replace character on screen with *
             }
-            printf("\n%d %d\n", strcmp(pass, passwd), strcmp(admin, asku));
-            printf("\n%s %s\n", admin, asku);
-            printf("\n%s %s\n", passwd, pass);
             }
+            system("cls");
             if(strcmp(pass, passwd) == 0 && strcmp(admin, asku) == 0 || access == 1)
             {
                 red();
@@ -145,10 +145,8 @@ int main()
                 {
                 access = 1;
                 //system("clear");
-                system("cls");
                 printf("\nAccess granted!");
                 askadmin();
-                printdoc();
                 printf("\nEnter your choice here:\n---> ");
                 scanf("%d", &i);
                 FILE *fp;
@@ -159,15 +157,27 @@ int main()
                 printf("\nEnter first name: ");
                 scanf("%c", &temp);
                 scanf("%[^\n]s", td.fname);
+                if(strcmp(mp, td.fname) == 0)
+                {
+                    strcpy(td.fname, "skipped");
+                }
                 dash(&td.fname);
                 printf("\nEnter middle name: ");
                 scanf("%c", &temp);
                 scanf("%[^\n]s", td.mname);
                 dash(&td.mname);
+                if(strcmp(mp, td.mname) == 0)
+                {
+                    strcpy(td.mname, "skipped");
+                }
                 printf("Enter last name: ");
                 scanf("%c", &temp);
                 scanf("%[^\n]s", td.lname);
                 dash(&td.lname);
+                if(strcmp(mp, td.lname) == 0)
+                {
+                    strcpy(td.lname, "skipped");
+                }
                 printf("\nEnter doctor NMC number: ");
                 scanf("%d", &td.nmc);
                 printf("Enter doctor's speciality: ");
@@ -175,13 +185,20 @@ int main()
                 scanf("%[^\n]s", td.special);
                 dash(&td.special);
                 strlwr(td.special);
+                if(strcmp(mp, td.special) == 0)
+                {
+                    strcpy(td.special, "skipped");
+                }
                 printf("\nEnter doctor's availablity(Time range)[Day] <Eg. 10:45-16:00[Sun,Tue,Fri]: ");
                 scanf("%c", &temp);
                 scanf("%[^\n]s", td.docfree);
                 dash(&td.docfree);
+                if(strcmp(mp, td.docfree) == 0)
+                {
+                    strcpy(td.fname, "skipped");
+                }
                 td.occupied = 0;
                 fprintf(fp, "%s %s %s %d %s %s %d\n", td.fname, td.mname, td.lname, td.nmc, td.special, td.docfree, td.occupied);
-                //++dindex;
                 fclose(fp);
                 break;
                 case 2:
@@ -192,10 +209,21 @@ int main()
                 case 3:
                     writepwd();
                     break;
+                case 4:
+                    fileread();
+                    modifydoc();
+                    break;
                 case 5:
                     modify(1);
                     break;
                 case 8:
+                    printdoc();
+                    char x[99];
+                    printf("\nPress any key to go back to admin menu:\n");
+                    scanf("%c", &temp);
+                    scanf("%[^\n]s", x);
+                    break;
+                case 9:
                     loopbreak = 1;
                     break;
                 default:

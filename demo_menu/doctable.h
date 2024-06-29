@@ -9,7 +9,14 @@ void docttable()
 }
 void printable(int i)
 {
+    if(strcmp(d[i].mname, "skipped") != 0)
+    {
     printf("\n| %d           |	%s   %s   %s        |	%s        |	%s          |",d[i].nmc,d[i].fname,d[i].mname,d[i].lname,d[i].special,d[i].docfree);
+    }
+    else
+    {
+        printf("\n| %d           |	%s     %s        |	%s        |	%s          |",d[i].nmc,d[i].fname,d[i].lname,d[i].special,d[i].docfree);
+    }
     printf("\n+--------------------------------------------------------------------------------------------------------+\n");
 
 }

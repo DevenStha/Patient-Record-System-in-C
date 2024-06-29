@@ -33,6 +33,7 @@
 		</Compiler>
 		<Unit filename="add-and-print.h" />
 		<Unit filename="addoc.h" />
+		<Unit filename="assign_doc.h" />
 		<Unit filename="doctable.h" />
 		<Unit filename="doctors.h" />
 		<Unit filename="fileprint.h" />
@@ -42,6 +43,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="printdoc.h" />
+		<Unit filename="pwd.h" />
+		<Unit filename="remove.h" />
+		<Unit filename="rmspace.h" />
 		<Unit filename="search-n-modify.h" />
 		<Unit filename="user.h" />
 		<Extensions>

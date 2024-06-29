@@ -1,17 +1,1 @@
 2 2 2 2 2 2 2 2 2 2 1000 1 2 7
-Huh thatwa sweird 23 23 23 fd-df cancer 23 3 1001 1 2 7
-2 2 2 2 23 3 12121 dead 122 3 1002 1 2 -1
-Real user here 2006 5 6 Fulbari sleepy 9876523 1 1003 1 2 7
-2 2 2 2 2 2 fulbari alive 92873 2 1004 1 2 7
-Deven Prasad Dhaka 2000 1 25 Fulbari cancer 987652 1 1005 1 2 7
-Deven No Shrestha 2006 6 6 fulbari eyesore 92837 1 1006 1 2 7
-deven chalugai thapa 2004 24 23 homeless headache noph 1 1007 1 0 234
-f f f 2 2 2 2 dih-ndf-bjdf-nd-j 2 2 1008 1 2 7
-skipped none skipped 2 2 2 2 vomit skipped 1 1009 1 2 456
-skipped none skipped 2 2 2 2 vomit skipped 1 1010 1 2 2345
-skipped none skipped 2 2 2 2 vomit skipped 1 1011 1 2 -1
-skipped none skipped 2 2 2 2 vomit skipped 1 1012 1 2 -1
-skipped none skipped 12 2 2 2 headache 2 1 1013 1 2 234
-skipped none skipped 2 2 2 skipped headache skipped 1 1014 1 2 -1
-skipped none skipped 2 2 2 skipped vomit skipped 1 1015 1 2 -1
-skipped none skipped 2 2 2 skipped vomit skipped 3 1016 1 2 2345

@@ -1,0 +1,7 @@
+#ifndef SEARCHDOC_H_INCLUDED
+#define SEARCHDOC_H_INCLUDED
+void modify
+
+
+
+#endif // SEARCHDOC_H_INCLUDED

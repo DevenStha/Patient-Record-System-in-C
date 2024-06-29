@@ -95,8 +95,6 @@ int add() //function for adding patients
     printf("\nEnter the first name of the Patient: ");
     scanf("%c", &temp);
     scanf("%[^\n]s", tmp.name);
-    printf("%s %s", tmp.name, mp);
-    printf("\n%d",strcmp(tmp.name, mp));
     if(strcmp(tmp.name, mp) == 0)
     {
         strcpy(tmp.name, "skipped");

@@ -89,13 +89,27 @@ void fileprint(int index)
 }
 
 
-/*void fileprintd(int findex)
+void fileprintd(int i)
 {
-    printf("\n\nDOCTOR NUMBER %d", findex + 1);
-    printf("\nDoctor name: %s %s %s", td.person);
-    printf("\nDoctor speciality: %s", td.special);
-    printf("\nDoctor age: %d", td.age);
-    printf("\nDoctor NRN num: %d", td.nmc);
-    printf("\nDoctor Phone number: %ld", td.ph);
-}*/
+    if(strcmp(d[i].mname, "skipped") != 0)
+    {
+    printf("\nDoctor name: %s %s %s", d[i].fname, d[i].mname, d[i].lname);
+    }
+    else
+    {
+        printf("\nDoctor name: %s %s", d[i].fname, d[i].lname);
+    }
+    printf("\nDoctor speciality: %s", d[i].special);
+    printf("\nDoctor NRN num: %d", d[i].nmc);
+    printf("\nDoctor Availablity: %s", d[i].docfree);
+    printf("\nDoctor occupied: ");
+    if(d[i].occupied == 1)
+    {
+        printf("Yes");
+    }
+    else
+    {
+        printf("No");
+    }
+}
 #endif // FILEPRINT_H_INCLUDED
