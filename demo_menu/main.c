@@ -9,13 +9,16 @@
 #include "fileprint.h"
 #include "filewrite.h"
 #include "doctable.h"
+#include "assign_doc.h"
 //#include "printdoc.h"
 #include "add-and-print.h"
 #include "search-n-modify.h"
-
+#include "pwd.h"
+#include "remove.h"
+#include "rmspace.h"
 void red()
 {
-    system("color 47");
+    system("color 07"); //originally red but it was a eyesore so changed it to black
 }
 void blue()
 {
@@ -24,21 +27,38 @@ void blue()
 void ask() //print the interface
 {
     blue();
-    printf("\t\t\t\t\t\t\tPatient Record System");
+    printf("\n\t\t\t\t\t\t\tPatient Record System");
     printf("\n\n\n\t\t\t\t----------------------------------------------------------");
     printf("\n\t\t\t\t\t\t\t User Choice");
     printf("\n\t\t\t\t----------------------------------------------------------");
     printf("\n\t\t\t\t1. Add new patient");
-    printf("\n\t\t\t\t2. Search/Update patient's data");
-    printf("\n\t\t\t\t3. Admin");
-    printf("\n\t\t\t\t4. Instructions");
-    printf("\n\t\t\t\t5. Exit\n ---> ");
+    printf("\n\t\t\t\t2. Admin");
+    printf("\n\t\t\t\t3. Instructions");
+    printf("\n\t\t\t\t4. Exit\n ---> ");
     printf("Enter your choice here: ");
 }
 void instructions() //instructions
 {
     printf("\n1. Enter the values as asked by the program.");
     printf("\n2. Fill ALL the forms");
+    printf("\n3. For string prompts you can skip the values by pressing enter!");
+}
+
+void askadmin()
+{
+    printf("\t\t\t\t\t\t\tAdmin");
+    printf("\n\n\n\t\t\t\t----------------------------------------------------------");
+    printf("\n\t\t\t\t\t\t\t User Choice");
+    printf("\n\t\t\t\t----------------------------------------------------------");
+    printf("\n\t\t\t\t1. Add new doctors");
+    printf("\n\t\t\t\t2. Search/Update patient's data");
+    printf("\n\t\t\t\t3. Change username or password");
+    printf("\n\t\t\t\t4. Search/Update doctor's data");
+    printf("\n\t\t\t\t5. Remove patient from the database: ");
+    printf("\n\t\t\t\t6. Remove doctor from the database: ");
+    printf("\n\t\t\t\t7. Instructions");
+    printf("\n\t\t\t\t8. Exit\n ---> ");
+    printf("\t\t\t\tDoctors' List: ");
 }
 /*void suggestion()
 {
@@ -51,15 +71,23 @@ int main()
     int dindex = 0; //indexing but for adding doctor(admin)
     int findex = 0;
     int save;
-    char admin[6] = "admin";
-    char asku[6];
+    int counter = 0;
+    char none[99];
+    strcpy(none, "none");
+    readpwd(); //read admin username and password
+    char admin[99];
+    strcpy(admin, ad.username);
+    char asku[99] = "tempp";
     int c = 0;
     int i = 0;
     int confirm;
     char spass;
     char temp;
-    char pass[9];
-    char passwd[9] = "admin123"; //9 indexes for 8 char password because garbage value at end
+    char pass[99] = "tempp123";
+    char passwd[99];
+    //char mp[]
+    strcpy(passwd, ad.pwd);
+    int access = 0;//9 indexes for 8 char password because garbage value at end
     while(true)
     {
         ask();
@@ -83,14 +111,21 @@ int main()
             //++index;
             break;
         case 2:
-            printdoc();
-            fileread();
-            modify();
-            break;
-        case 3:
             //index;
+            if(counter == 3)
+            {
+                printf("\n!!!Admin section is blocked");
+                printf("\nYou entered the wrong username or password 3 times!");
+                printf("\nRestart the program and try again");
+                access = -1;
+            }
+            if(access == 0)
+            {
+            //asku[6] = "tempp";
+            c = 0;
             printf("Enter admin username: ");
             scanf("%s", &asku);
+            memset(pass, '\0', sizeof(pass));
             printf("\nEnter admin password: ");
             while((spass = _getch()) != 13) //keep asking spass value until user inputs 13('\n') for some reason
             {                               //writing '\n' doesn't work and I had to write 13
@@ -98,68 +133,94 @@ int main()
                 c++; //++
                 printf("*"); //replace character on screen with *
             }
-            if(strcmp(pass, passwd) == 0 && strcmp(admin, asku) == 0)
+            printf("\n%d %d\n", strcmp(pass, passwd), strcmp(admin, asku));
+            printf("\n%s %s\n", admin, asku);
+            printf("\n%s %s\n", passwd, pass);
+            }
+            if(strcmp(pass, passwd) == 0 && strcmp(admin, asku) == 0 || access == 1)
             {
+                red();
+                int loopbreak = 0;
+                while(loopbreak == 0)
+                {
+                access = 1;
+                //system("clear");
+                system("cls");
+                printf("\nAccess granted!");
+                askadmin();
                 printdoc();
+                printf("\nEnter your choice here:\n---> ");
+                scanf("%d", &i);
                 FILE *fp;
                 fp = fopen("doctor.txt", "a+");
-                printf("\nAccess granted!");
-                /*printf("\n-------DOCTOR LIST---------");
-                while(fscanf(fp, "%s %s %d %d %ld\n", td.person, td.special, &td.age,
-                             &td.nmc, &td.ph) != EOF)
+                switch(i)
                 {
-                    fileprintd(findex);
-                    ++findex;
-                }*/
-                int e;
-                printf("\nDo you want to add new doctor?(Enter 1 for Yes, 2 for No)\n\n1.Yes\n2.No\n--> : ");
-                scanf("%d", &e);
-                if(e == 1)
-                {
-                printf("\nEnter doctor name: ");
+                case 1:
+                printf("\nEnter first name: ");
                 scanf("%c", &temp);
-                scanf("%[^\n]s", d[dindex].person);
-                printf("\nEnter his/her speciality: ");
+                scanf("%[^\n]s", td.fname);
+                dash(&td.fname);
+                printf("\nEnter middle name: ");
                 scanf("%c", &temp);
-                scanf("%[^\n]s", d[dindex].special);
-                printf("Enter doctor's age: ");
-                scanf("%d", &d[dindex].age);
-                printf("\nEnter doctor NRN number: ");
-                scanf("%d", &d[dindex].nmc);
-                printf("\nEnter doctor phone number: ");
-                scanf("%ld", &d[dindex].ph);
-                fprintf(fp, "\n%s %s %d %d %ld", d[dindex].person, d[dindex].special, d[dindex].age, d[dindex].nmc, d[dindex].ph);
-                ++dindex;
-                }
-                else
-                {
-                    break;
-                }
+                scanf("%[^\n]s", td.mname);
+                dash(&td.mname);
+                printf("Enter last name: ");
+                scanf("%c", &temp);
+                scanf("%[^\n]s", td.lname);
+                dash(&td.lname);
+                printf("\nEnter doctor NMC number: ");
+                scanf("%d", &td.nmc);
+                printf("Enter doctor's speciality: ");
+                scanf("%c", &temp);
+                scanf("%[^\n]s", td.special);
+                dash(&td.special);
+                strlwr(td.special);
+                printf("\nEnter doctor's availablity(Time range)[Day] <Eg. 10:45-16:00[Sun,Tue,Fri]: ");
+                scanf("%c", &temp);
+                scanf("%[^\n]s", td.docfree);
+                dash(&td.docfree);
+                td.occupied = 0;
+                fprintf(fp, "%s %s %s %d %s %s %d\n", td.fname, td.mname, td.lname, td.nmc, td.special, td.docfree, td.occupied);
+                //++dindex;
                 fclose(fp);
+                break;
+                case 2:
+                    printdoc();
+                    fileread();
+                    modify(0);
+                    break;
+                case 3:
+                    writepwd();
+                    break;
+                case 5:
+                    modify(1);
+                    break;
+                case 8:
+                    loopbreak = 1;
+                    break;
+                default:
+                    printf("\nINVALID VALUE");
+                }
+                }
+                //fclose(fp);
             }
             else
             {
                 printf("\nAccess denined.");
-                return 1;
+                counter++;
             }
             break;
-        case 4:
+        case 3:
             instructions();
             //index;
             break;
-        case 5:
+        case 4:
             return 0;
         default:
             red();
             printf("Enter a valid choice!!!: ");
             //index;
         }
-        printf("\n\nDo you want to exit? (Enter 1 for Yes, 2 for No)\n\n1. Yes\n2. No: \n----> ");
-        scanf("%d", &confirm);
-        if(confirm != 2)
-        {
-            break;
-        }
-    }
+            }
    return 0;
 }

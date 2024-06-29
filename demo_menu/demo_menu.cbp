@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="add-and-print.h" />
+		<Unit filename="addoc.h" />
+		<Unit filename="doctable.h" />
 		<Unit filename="doctors.h" />
 		<Unit filename="fileprint.h" />
 		<Unit filename="fileread.h" />

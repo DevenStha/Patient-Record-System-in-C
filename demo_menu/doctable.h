@@ -9,7 +9,7 @@ void docttable()
 }
 void printable(int i)
 {
-    printf("\n| %d           |	%s              |	%s        |	%d          |",d[i].nmc,d[i].person,d[i].special,d[i].age);
+    printf("\n| %d           |	%s   %s   %s        |	%s        |	%s          |",d[i].nmc,d[i].fname,d[i].mname,d[i].lname,d[i].special,d[i].docfree);
     printf("\n+--------------------------------------------------------------------------------------------------------+\n");
 
 }

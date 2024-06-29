@@ -13,8 +13,16 @@ void fileprint(int index)
                 if(tmp.code == code)
                 {
         */
+        char none[99];
+        strcpy(none, "none");
         printf("\nInfo: \n\n");
+        if(strcmp(pt[index].mname, none) != 0)
+        {
         printf("\nName: %s %s %s",pt[index].name, pt[index].mname, pt[index].lname);
+        }
+        else{
+            printf("\nName: %s %s",pt[index].name, pt[index].lname);
+        }
         printf("\nDate of birth: %d-%d-%d",pt[index].year,pt[index].month, pt[index].day);
         switch(pt[index].gender)
         {
@@ -36,16 +44,17 @@ void fileprint(int index)
         }
 
         printf("\nAddress: %s", pt[index].address);
-        printf("\nPhone number: %ld", pt[index].ph);
+        printf("\nPhone number: %s", pt[index].ph);
         printf("\nSymptom: %s", pt[index].symptoms);
         for(int i = 0; i < 100; ++i)
         {
             if(strcmp(pt[index].symptoms, d[i].special) == 0)
             {
                 printf("\nFor your symptoms you may refer to these doctors: ");
-                printf("\nName: %s", d[i].person);
-                printf("\nAge: %d", d[i].age);
+                printf("\nName: %s %s %s", d[i].fname, d[i].mname, d[i].lname);
+                printf("\nSpeciality: %s", d[i].special);
                 printf("\nNMC: %d", d[i].nmc);
+                printf("\nAvailablity: %s", d[i].docfree);
                 break;
             }
             else if(i == 99)
@@ -69,6 +78,7 @@ void fileprint(int index)
         default:
             printf("Unknown Status!?");
         }
+        printf("\nReferred to : %d[Doc NMC]", pt[index].nmc);
         printf("\nYour code is %d", pt[index].code);
         /*if(pt[index].firstime == 2) //for adding
         {
@@ -79,13 +89,13 @@ void fileprint(int index)
 }
 
 
-void fileprintd(int findex)
+/*void fileprintd(int findex)
 {
     printf("\n\nDOCTOR NUMBER %d", findex + 1);
-    printf("\nDoctor name: %s", td.person);
+    printf("\nDoctor name: %s %s %s", td.person);
     printf("\nDoctor speciality: %s", td.special);
     printf("\nDoctor age: %d", td.age);
     printf("\nDoctor NRN num: %d", td.nmc);
     printf("\nDoctor Phone number: %ld", td.ph);
-}
+}*/
 #endif // FILEPRINT_H_INCLUDED

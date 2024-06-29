@@ -3,20 +3,24 @@
 
 struct doctor //doctor
 {
-    char special[99];// = {"cough", "headache", "physician", "chest pain", "eye"};
-    char person[99];// = {"Shital Dhaka", "Kaushal Shrestha", "Ramesh Chalise", "Anil Sharma", "Safal Thapa"};
+    char special[999];// = {"cough", "headache", "physician", "chest pain", "eye"};
+    char fname[99];
+    char mname[99];
+    char lname[99];// = {"Shital Dhaka", "Kaushal Shrestha", "Ramesh Chalise", "Anil Sharma", "Safal Thapa"};
     int nmc;// = {1000, 1001, 1002, 1003, 1004};
-    int age;
-    long ph;// = {987372892, 39298372, 3892738, 1628792, 78372};
+    char docfree[99];
+    int occupied;// = {987372892, 39298372, 3892738, 1628792, 78372};
 }d[999];
 
-struct tempdoctor
+struct tmpdoc
 {
-    char special[99];// = {"cough", "headache", "physician", "chest pain", "eye"};
-    char person[99];// = {"Shital Dhaka", "Kaushal Shrestha", "Ramesh Chalise", "Anil Sharma", "Safal Thapa"};
+    char special[999];// = {"cough", "headache", "physician", "chest pain", "eye"};
+    char fname[99];
+    char mname[99];
+    char lname[99];// = {"Shital Dhaka", "Kaushal Shrestha", "Ramesh Chalise", "Anil Sharma", "Safal Thapa"};
     int nmc;// = {1000, 1001, 1002, 1003, 1004};
-    int age;
-    long ph;
+    char docfree[99];
+    int occupied;
 }td;
 
 #endif // DOCTORS_H_INCLUDED

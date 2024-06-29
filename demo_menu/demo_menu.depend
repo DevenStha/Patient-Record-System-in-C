@@ -18,7 +18,7 @@
 	<stdbool.h>
 	<string.h>
 
-1719508523 source:d:\demo_menu\main.c
+1719670551 source:d:\demo_menu\main.c
 	<stdio.h>
 	<stdbool.h>
 	<string.h>
@@ -29,22 +29,34 @@
 	"fileprint.h"
 	"filewrite.h"
 	"doctable.h"
+	"assign_doc.h"
 	"add-and-print.h"
 	"search-n-modify.h"
+	"pwd.h"
+	"remove.h"
+	"rmspace.h"
 
-1719503583 d:\demo_menu\user.h
+1719662294 d:\demo_menu\user.h
 
-1718942891 d:\demo_menu\doctors.h
+1719664884 d:\demo_menu\doctors.h
 
-1719502736 d:\demo_menu\add-and-print.h
+1719668013 d:\demo_menu\add-and-print.h
 
-1719502981 d:\demo_menu\search-n-modify.h
+1719671007 d:\demo_menu\search-n-modify.h
 
-1719500894 d:\demo_menu\fileprint.h
+1719667455 d:\demo_menu\fileprint.h
 
-1719506473 d:\demo_menu\fileread.h
+1719665734 d:\demo_menu\fileread.h
 
-1719501514 d:\demo_menu\filewrite.h
+1719666475 d:\demo_menu\filewrite.h
 
-1719508357 d:\demo_menu\doctable.h
+1719633500 d:\demo_menu\doctable.h
+
+1719649344 d:\demo_menu\pwd.h
+
+1719660044 d:\demo_menu\remove.h
+
+1719657606 d:\demo_menu\rmspace.h
+
+1719667993 d:\demo_menu\assign_doc.h
 
