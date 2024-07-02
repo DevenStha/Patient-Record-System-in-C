@@ -8,7 +8,7 @@ void assigndoc(char symp[999], int *valid)
     int j = 0;
     int index = 0;
     int iterate = 0;
-    for(int i = 0; i < 99 && d[i].nmc > 0; i++)
+    for(int i = 0; i < 9999 && d[i].nmc > 0; i++)
     {
         if(strcmp(symp, d[i].special) == 0 && d[i].occupied != 1)
         {

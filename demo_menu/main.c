@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
-#define physician "Deven Shrestha"
 #include "user.h"
 #include "doctors.h"
 #include "fileread.h"
@@ -47,7 +46,7 @@ void instructions() //instructions
 
 void askadmin()
 {
-    printf("\t\t\t\t\t\t\tAdmin");
+    printf("\n\t\t\t\t\t\t\tAdmin");
     printf("\n\n\n\t\t\t\t----------------------------------------------------------");
     printf("\n\t\t\t\t\t\t\t User Choice");
     printf("\n\t\t\t\t----------------------------------------------------------");
@@ -57,9 +56,8 @@ void askadmin()
     printf("\n\t\t\t\t4. Search/Update doctor's data");
     printf("\n\t\t\t\t5. Remove patient from the database: ");
     printf("\n\t\t\t\t6. Remove doctor from the database: ");
-    printf("\n\t\t\t\t7. Instructions");
-    printf("\n\t\t\t\t8. View list of doctors: ");
-    printf("\n\t\t\t\t9. Exit\n ---> ");
+    printf("\n\t\t\t\t7. View list of doctors");
+    printf("\n\t\t\t\t8. Exit\n ---> ");
     printf("\t\t\t\tDoctors' List: ");
 }
 /*void suggestion()
@@ -189,6 +187,7 @@ int main()
                 {
                     printf("\nNMC CAN'T BE LESS THAN ZERO\n");
                 }
+                }
                 printf("Enter doctor's speciality: ");
                 scanf("%c", &temp);
                 scanf("%[^\n]s", td.special);
@@ -230,14 +229,15 @@ int main()
                     fileread();
                     modifydoc(1);
                     break;
-                case 8:
+                case 7:
+                    system("cls");
                     printdoc();
                     char x[99];
-                    printf("\nPress any key to go back to admin menu:\n");
+                    printf("\nPress ENTER to go back to admin menu:\n");
                     scanf("%c", &temp);
                     scanf("%[^\n]s", x);
                     break;
-                case 9:
+                case 8:
                     loopbreak = 1;
                     break;
                 default:
@@ -245,7 +245,6 @@ int main()
                 }
                 }
                 //fclose(fp);
-            }
             }
             else
             {

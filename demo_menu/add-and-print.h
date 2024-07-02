@@ -26,13 +26,35 @@ int add() //function for adding patients
             int temp1;
             int n;
             int i;
+            int ask;
+            char tmp;
+            char ph[11];
+            printf("Search via phone number or code?(1 for phone number, 2 for code): ");
+            printf("\n1.Code\n2.Phone number\n-->");
+            scanf("%d", &ask);
+            if(ask == 1)
+            {
             printf("Enter patient code while he/she were in our hospital: ");
             scanf("%d", &temp1);
+            }
+            else
+            {
+                printf("Enter patient's phone number while he/she were in our hospital: ");
+                scanf("%c", &tmp);
+                scanf("%[^\n]s", ph);
+            }
             for(i = 0; i < 9999; i++)
             {
-                if(pt[i].code == temp1 && temp1 != -1 && pt[i].status != 0)
+                if((pt[i].code == temp1 && temp1 != -1 && pt[i].status != 0) || (strcmp(pt[i].ph, ph) == 0 && temp1 != -1 && pt[i].status !=0))
                 {
+                    if(ask == 1)
+                    {
                     printf("\nCode Found!!!");
+                    }
+                    else
+                    {
+                        printf("\nPatient with the phone number found!!");
+                    }
                     fileprint(i);
                     index = i;
                     temp = 1;
@@ -250,7 +272,7 @@ int add() //function for adding patients
             printf("\nDoctor sucessfully choosen");
             for(int x = 0; x < 9999; x++)
             {
-                if(tmp.nmc == d[x].nmc)
+                if(pt[index].nmc == d[x].nmc)
                 {
                     d[x].occupied = 1;
                     filedwrite();
@@ -350,6 +372,14 @@ void print(int index) //print all the info on the pt[index]
             break;
         default:
             printf("Unknown Status!?");
+        }
+        if(tmp.nmc == -1)
+        {
+            printf("\nNo doctors available or free for your symptoms :(");
+        }
+        else
+        {
+            printf("\nReferred to: %d[Doctor NMC]", tmp.nmc);
         }
         printf("\nYour code is %d", tmp.code);
         if(tmp.firstime == 2) //for adding

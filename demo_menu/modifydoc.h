@@ -7,6 +7,11 @@ void modifydoc(int rm)
     int i;
     char tmp;
     int found = -1;
+    char sp[999];
+    strcpy(sp, "");
+    char emp[999];
+    strcpy(emp, "");
+    int nmc;
     printf("\nEnter doctor's NMC number: ");
     scanf("%d", &docnmc);
     for(int a = 0; a < 999 && docnmc > -1; a++)
@@ -55,14 +60,51 @@ void modifydoc(int rm)
     dash(&d[i].lname);
     printf("\n\nEnter new speciality: ");
     scanf("%c", &tmp);
-    scanf("%[^\n]s", d[i].special);
-    dash(&d[i].special);
+    scanf("%[^\n]s", sp);
+    if(strcmp(sp, emp) == 0)
+    {
+        strcpy(sp, d[i].special);
+    }
+    if(strcmp(sp, d[i].special) != 0)
+    {
+        dash(&sp);
+        strlwr(sp);
+        d[i].occupied = 0;
+        strcpy(d[i].special, sp);
+        for(int x = 0; x < 9999; x++)
+        {
+            if(d[i].nmc == pt[x].nmc)
+            {
+                printf("\nThe patient with the code %d has been put on hold!", pt[x].code);
+                pt[x].nmc = -1;
+                filewrite();
+                break;
+            }
+        }
+    }
+    /*else
+    {
+       strcpy(d[i].special, d[i].special);
+    }*/
     printf("\n\nEnter new available time: ");
     scanf("%c", &tmp);
     scanf("%[^\n]s", d[i].docfree);
     dash(&d[i].docfree);
     printf("Enter new NMC Number: ");
-    scanf("%d", &d[i].nmc);
+    scanf("%d", &nmc);
+    if(nmc != d[i].nmc)
+    {
+        for(int x = 0; x < 9999; x++)
+        {
+            if(d[i].nmc == pt[x].nmc)
+            {
+                pt[x].nmc = nmc;
+                filewrite();
+                break;
+            }
+        }
+        d[i].nmc = nmc;
+    }
     filedwrite();
     }
     else

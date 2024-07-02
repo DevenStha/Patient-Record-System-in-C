@@ -4,6 +4,8 @@
 	<stdbool.h>
 	<string.h>
 
+1718878570 
+
 1717736419 source:c:\users\u\documents\demo_menu\doctor.c
 	<string.h>
 
@@ -18,7 +20,7 @@
 	<stdbool.h>
 	<string.h>
 
-1719685675 source:d:\demo_menu\main.c
+1719883995 source:d:\demo_menu\main.c
 	<stdio.h>
 	<stdbool.h>
 	<string.h>
@@ -37,29 +39,76 @@
 	"rmspace.h"
 	"modifydoc.h"
 
-1719662294 d:\demo_menu\user.h
+1719685675 .h"
 
-1719664884 d:\demo_menu\doctors.h
+1719827257 d:\demo_menu\user.h
 
-1719684143 d:\demo_menu\add-and-print.h
+1719827257 d:\demo_menu\doctors.h
 
-1719684939 d:\demo_menu\search-n-modify.h
+1719829850 d:\demo_menu\add-and-print.h
 
-1719683803 d:\demo_menu\fileprint.h
+1719933006 d:\demo_menu\search-n-modify.h
+
+1719828755 d:\demo_menu\fileprint.h
 
 1719665734 d:\demo_menu\fileread.h
 
 1719666475 d:\demo_menu\filewrite.h
 
-1719685750 d:\demo_menu\doctable.h
+1719829897 d:\demo_menu\doctable.h
 
 1719649344 d:\demo_menu\pwd.h
 
-1719684727 d:\demo_menu\remove.h
+1719887244 d:\demo_menu\remove.h
 
 1719657606 d:\demo_menu\rmspace.h
 
-1719667993 d:\demo_menu\assign_doc.h
+1719929362 d:\demo_menu\assign_doc.h
 
-1719685506 d:\demo_menu\modifydoc.h
+1719928559 d:\demo_menu\modifydoc.h
+
+1719685675 source:/home/u/files/demo_menu/main.c
+	<stdio.h>
+	<stdbool.h>
+	<string.h>
+	<stdlib.h>
+	"user.h"
+	"doctors.h"
+	"fileread.h"
+	"fileprint.h"
+	"filewrite.h"
+	"doctable.h"
+	"assign_doc.h"
+	"add-and-print.h"
+	"search-n-modify.h"
+	"pwd.h"
+	"remove.h"
+	"rmspace.h"
+	"modifydoc.h"
+
+1719662294 /home/u/files/demo_menu/user.h
+
+1719664884 /home/u/files/demo_menu/doctors.h
+
+1719665734 /home/u/files/demo_menu/fileread.h
+
+1719683803 /home/u/files/demo_menu/fileprint.h
+
+1719666475 /home/u/files/demo_menu/filewrite.h
+
+1719685750 /home/u/files/demo_menu/doctable.h
+
+1719667993 /home/u/files/demo_menu/assign_doc.h
+
+1719684143 /home/u/files/demo_menu/add-and-print.h
+
+1719684939 /home/u/files/demo_menu/search-n-modify.h
+
+1719649344 /home/u/files/demo_menu/pwd.h
+
+1719684727 /home/u/files/demo_menu/remove.h
+
+1719657606 /home/u/files/demo_menu/rmspace.h
+
+1719685506 /home/u/files/demo_menu/modifydoc.h
 

@@ -46,23 +46,6 @@ void fileprint(int index)
         printf("\nAddress: %s", pt[index].address);
         printf("\nPhone number: %s", pt[index].ph);
         printf("\nSymptom: %s", pt[index].symptoms);
-        for(int i = 0; i < 100; ++i)
-        {
-            if(strcmp(pt[index].symptoms, d[i].special) == 0)
-            {
-                printf("\nFor your symptoms you may refer to these doctors: ");
-                printf("\nName: %s %s %s", d[i].fname, d[i].mname, d[i].lname);
-                printf("\nSpeciality: %s", d[i].special);
-                printf("\nNMC: %d", d[i].nmc);
-                printf("\nAvailablity: %s", d[i].docfree);
-                break;
-            }
-            else if(i == 99)
-            {
-                printf("\nWe didn't find any one so please refer to our physician: ");
-                printf("%s", physician);
-            }
-        }
         printf("\nPatient status: ");
         switch(pt[index].status)
         {
@@ -78,7 +61,14 @@ void fileprint(int index)
         default:
             printf("Unknown Status!?");
         }
-        printf("\nReferred to : %d[Doc NMC]", pt[index].nmc);
+        if(pt[index].nmc == -1)
+        {
+            printf("\nReferred to: On Hold");
+        }
+        else
+        {
+            printf("\nReferred to : %d[Doc NMC]", pt[index].nmc);
+        }
         printf("\nYour code is %d", pt[index].code);
         /*if(pt[index].firstime == 2) //for adding
         {

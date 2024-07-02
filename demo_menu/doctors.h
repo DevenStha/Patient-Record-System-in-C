@@ -10,7 +10,7 @@ struct doctor //doctor
     int nmc;// = {1000, 1001, 1002, 1003, 1004};
     char docfree[99];
     int occupied;// = {987372892, 39298372, 3892738, 1628792, 78372};
-}d[999];
+}d[9999];
 
 struct tmpdoc
 {

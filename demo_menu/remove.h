@@ -15,6 +15,7 @@ void rmpatient(int i)
     pt[i].gender = 0;
     pt[i].status = 0;
     pt[i].firstime = 0;
+    printf("\nPatient successfully removed!!");
 }
 
 void rmdoc(int i)
@@ -23,8 +24,19 @@ void rmdoc(int i)
     strcpy(d[i].fname ,"rm");
     strcpy(d[i].mname ,"rm");
     strcpy(d[i].lname ,"rm");// = {"Shital Dhaka", "Kaushal Shrestha", "Ramesh Chalise", "Anil Sharma", "Safal Thapa"};
-    d[i].nmc = -1;// = {1000, 1001, 1002, 1003, 1004};
     strcpy(d[i].docfree ,"rm");
     d[i].occupied = 1;
+    for(int x = 0; x < 9999; x++)
+    {
+        if(d[i].nmc == pt[x].nmc)
+        {
+            pt[i].nmc = -1;
+            filewrite();
+            printf("\nWARNING: Patient with the code %d has been put on hold!!!", pt[x].code);
+            break;
+        }
+    }
+    d[i].nmc = -1;
+    printf("\nDoctor successfully removed");
 }
 #endif // REMOVE_H_INCLUDED

@@ -9,6 +9,9 @@ void modify(int rm) //if rm is 1 it will remove the specified data
     int tmp = 0;
     int type;
     char mp[99];
+    strcpy(mp, "");
+    char symp[999];
+    strcpy(symp, "");
     printf("Search by phone number or code(Enter 1 for phone number, 2 for code):\n1.Phone Number\n2.Code\n---> ");
     scanf("%d", &type);
     if(type == 2)
@@ -65,10 +68,29 @@ void modify(int rm) //if rm is 1 it will remove the specified data
             {
                 d[i].occupied = 0;
                 pt[i].nmc = -1;
+                filewrite();
                 filedwrite();
+                if(pt[in].status == 2)
+                {
+                    printf("\nPatient Successfully transferred to Transferred section!");
+                }
+                else
+                {
+                    printf("\nPatient Successfully transferred to Cured section!");
+                }
                 return;
             }
         }
+        if(pt[in].status == 2)
+        {
+            printf("\nPatient Successfully transferred to Transferred section!");
+        }
+        else
+        {
+            printf("\nPatient Successfully transferred to Cured section!");
+        }
+        filewrite();
+        return;
     }
     else{
         break;
@@ -123,9 +145,16 @@ void modify(int rm) //if rm is 1 it will remove the specified data
     dash(&pt[in].ph);
     printf("\nNewer/updated symptom: ");
     scanf("%c", &temp);
-    scanf("%[^\n]s", pt[in].symptoms);
-    dash(&pt[in].symptoms);
-    strlwr(pt[in].symptoms);
+    scanf("%[^\n]s", symp);
+    dash(&symp);
+    strlwr(symp);
+    if(strcmp(symp, mp) == 0)
+    {
+        strcpy(symp, pt[in].symptoms);
+    }
+    if(strcmp(symp, pt[in].symptoms) == 0 && pt[in].nmc == -1 || strcmp(symp, pt[in].symptoms) != 0)
+    {
+    strcpy(pt[in].symptoms, symp);
     int vldnmc[99];
     assigndoc(pt[in].symptoms, &vldnmc);
    // int nmc[99];
@@ -140,7 +169,7 @@ void modify(int rm) //if rm is 1 it will remove the specified data
     }
     printf("\nChoose doctor by typing NMC number: ");
     scanf("%d", &pt[in].nmc);
-    for(int x = 0; x < 99 && pt[in].nmc > 0; x++)
+    for(int x = 0; x < 9999 && pt[in].nmc > 0; x++)
     {
         if(vldnmc[x] == pt[in].nmc)
         {
@@ -161,6 +190,7 @@ void modify(int rm) //if rm is 1 it will remove the specified data
     if(vld == 0)
     {
         printf("\nPlease enter correct NMC number!");
+    }
     }
     }
     filewrite();
