@@ -15,15 +15,25 @@ void rmpatient(int i)
     pt[i].gender = 0;
     pt[i].status = 0;
     pt[i].firstime = 0;
+    for(int x = 0; x < 9999; x++)
+    {
+        if(pt[i].nmc == d[x].nmc)
+        {
+            d[x].occupied = 0;
+            filedwrite();
+            pt[i].nmc = -100;
+            break;
+        }
+    }
     printf("\nPatient successfully removed!!");
 }
 
 void rmdoc(int i)
 {
-    strcpy(d[i].special, "rm");// = {"cough", "headache", "physician", "chest pain", "eye"};
+    strcpy(d[i].special, "rm");
     strcpy(d[i].fname ,"rm");
     strcpy(d[i].mname ,"rm");
-    strcpy(d[i].lname ,"rm");// = {"Shital Dhaka", "Kaushal Shrestha", "Ramesh Chalise", "Anil Sharma", "Safal Thapa"};
+    strcpy(d[i].lname ,"rm");
     strcpy(d[i].docfree ,"rm");
     d[i].occupied = 1;
     for(int x = 0; x < 9999; x++)

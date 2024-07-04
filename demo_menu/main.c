@@ -19,11 +19,11 @@
 
 void red()
 {
-    system("color 07"); //originally red but it was a eyesore so changed it to black
+    system("color 07"); //originally red but it was a eyesore so changed it to black(0 = black, 7, white)
 }
 void blue()
 {
-    system("color 17");
+    system("color 17"); //1 blue 7 white
 }
 void ask() //print the interface
 {
@@ -44,7 +44,7 @@ void instructions() //instructions
     printf("\n2. For string prompts you can skip the values by pressing enter!");
 }
 
-void askadmin()
+void askadmin() //admin main menu
 {
     printf("\n\t\t\t\t\t\t\tAdmin");
     printf("\n\n\n\t\t\t\t----------------------------------------------------------");
@@ -76,21 +76,21 @@ int main()
     strcpy(none, "none");
     readpwd(); //read admin username and password
     char admin[99];
-    strcpy(admin, ad.username);
-    char asku[99] = "tempp";
+    strcpy(admin, ad.username); //copy ad.username to admin
+    char asku[99] = "tempp"; //placeholder string
     int c = 0;
     int i = 0;
     int confirm;
     char spass;
     char temp;
-    char pass[99] = "tempp123";
+    char pass[99] = "tempp123"; //placeholder string
     char passwd[99];
     char mp[99] = "";
-    strcpy(passwd, ad.pwd);
-    int access = 0;//9 indexes for 8 char password because garbage value at end
+    strcpy(passwd, ad.pwd); //copy ad.pwd to passwd
+    int access = 0;//9 indexes for 8 char password because '\0' at end
     while(true)
     {
-        ask();
+        ask(); //call ask() for printing interface
         char name[99];
         scanf("%d",&i);
         /*if(i == 2)
@@ -100,13 +100,13 @@ int main()
         switch(i)
         {
         case 1:
-            save = index; //save initial index value because it will change quite a lot in add or print functions as the address is passed
-            index = save;
+            /*save = index; //
+            index = save;*/
             fileread();
             printdoc();
             //add();
             if(add() == 2)
-                print(&index);
+                print();
             fileread();
             //++index;
             break;

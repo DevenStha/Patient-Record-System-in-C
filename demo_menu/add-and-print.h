@@ -3,25 +3,25 @@
 int add() //function for adding patients
 {
     FILE *fp;
-    fp = fopen("patient.txt", "a+");
+    fp = fopen("patient.txt", "a+"); //open patient.txt in a+ mode
     int index = -1;
     int exist = 0;
     char none[99];
-    strcpy(none, "none");
-    char mp[99] = "";
+    strcpy(none, "none"); //copy none to none for future reference
+    char mp[99] = ""; //empty value
     if(fp == NULL)
     {
         red();
-        printf("Error opening file!");
+        printf("Error opening file!"); //file error
     }
-    int temp = -1;
+    int temp = -1; //sole purpose is for checking conditions
     //int size = sizeof(struct patient);
         while(temp == -1 || exist == 1)
         {
         exist = 0;
         printf("\nHas the patient been to our hospital before?:(Enter 1 for Yes, 2 for No) \n1.Yes \n2.No\n----> ");
         scanf("%d", &tmp.firstime);
-        if(tmp.firstime == 1)
+        if(tmp.firstime == 1) //patient been here
         {
             int temp1;
             int n;
@@ -32,12 +32,12 @@ int add() //function for adding patients
             printf("Search via phone number or code?(1 for phone number, 2 for code): ");
             printf("\n1.Code\n2.Phone number\n-->");
             scanf("%d", &ask);
-            if(ask == 1)
+            if(ask == 1) //1 is code
             {
             printf("Enter patient code while he/she were in our hospital: ");
             scanf("%d", &temp1);
             }
-            else
+            else //2 for ph number
             {
                 printf("Enter patient's phone number while he/she were in our hospital: ");
                 scanf("%c", &tmp);
@@ -45,9 +45,10 @@ int add() //function for adding patients
             }
             for(i = 0; i < 9999; i++)
             {
+                //check if code or phone number of previous patient is valid!!
                 if((pt[i].code == temp1 && temp1 != -1 && pt[i].status != 0) || (strcmp(pt[i].ph, ph) == 0 && temp1 != -1 && pt[i].status !=0))
                 {
-                    if(ask == 1)
+                    if(ask == 1) //ask 1 for code ask 2 for phone number
                     {
                     printf("\nCode Found!!!");
                     }
@@ -55,9 +56,9 @@ int add() //function for adding patients
                     {
                         printf("\nPatient with the phone number found!!");
                     }
-                    fileprint(i);
-                    index = i;
-                    temp = 1;
+                    fileprint(i); //update patient.txt
+                    index = i; //i is the index where previous patient was found so store it for future use
+                    temp = 1; // for conditions
                     break;
                 }
                 /*if(pt[i].status == 1)
@@ -69,16 +70,16 @@ int add() //function for adding patients
                     break;
                 }*/
             }
-            if(pt[index].status == 1)
+            if(pt[index].status == 1) //code found but patient is still ongoing treatment
             {
                 printf("\n\nThe patient is still in our hospital!");
                 printf("\nYou need admin access to change existing patient's data!\n\n");
                 temp = -1;
                 exist = 1;
             }
-            if(temp == -1 && exist == 0)
+            if(temp == -1 && exist == 0) //if code not found
             {
-                printf("\nWrong code! or the patient is still in the hospital\n");
+                printf("\nWrong code!\n");
             }
         }
         else
@@ -86,49 +87,25 @@ int add() //function for adding patients
             break;
         }
         }
-            /*for(n = 0; n < 9999; n++)
-            {
-            if(temp1 == pt[n].code) //search through every index for matching code
-            {
-                //printf("The code doesn't exist!\n");
-                //printf("Try Again\n");
-                printf("Code found!!\n");
-                //temp = 1;
-                temp = n;
-                break;
-            }
-        }
-        if(temp != -1)
-        {
-            *in = temp;
-            break;
-        }
-        printf("\nCode not found!?\n Make sure to type the right code next time!!\n");
-        }
-        else
-        {
-            printf("\nNo?, Then enter as specified below:\n\n");
-            break;
-        }
-        }*/
-    if(temp == -1)
+
+    if(temp == -1) //temp = -1 when new patient
     {
-    char c = '-';
+    char c = '-'; //unused
     printf("\nEnter the first name of the Patient: ");
     scanf("%c", &temp);
     scanf("%[^\n]s", tmp.name);
-    if(strcmp(tmp.name, mp) == 0)
+    if(strcmp(tmp.name, mp) == 0) //if tmp.name is empty then provide value of "skipped" as to not distrupt storing content in file
     {
         strcpy(tmp.name, "skipped");
     }
-    dash(&tmp.name);
-    strcpy(tmp.mname, "none");
+    dash(&tmp.name); //replace spaces with dash
+    strcpy(tmp.mname, "none"); //default name of tmp.mname be "none" because not everybody has middle name
     printf("\nEnter middle name: ");
     scanf("%c", &temp);
     scanf("%[^\n]s", tmp.mname);
     if(strcmp(tmp.mname, mp) == 0)
     {
-        strcpy(tmp.mname, none);
+        strcpy(tmp.mname, none); //redundant code
     }
     dash(&tmp.mname);
     printf("\nEnter last name: ");
@@ -146,7 +123,7 @@ int add() //function for adding patients
     scanf("%d", &tmp.month);
     printf("\nWhich day you were born in?(in numbers): ");
     scanf("%d", &tmp.day);
-    while(true)
+    while(true) //gender be between 1 and 4
     {
     printf("Enter patient gender:(Enter 1 for Male, 2 for Female, 3 for Transgender and 4 for Rather not say) \n 1. Male \n 2. Female \n 3. Transgender\n 4. Rather not say \n ---> ");
     scanf("%d", &tmp.gender);
@@ -187,11 +164,11 @@ int add() //function for adding patients
         strcpy(tmp.symptoms, "skipped");
     }
     dash(&tmp.symptoms);
-    strlwr(tmp.symptoms);
+    strlwr(tmp.symptoms); //lowercase symptoms as to have easier time comparing symptoms with speciality
     tmp.status = 1;
-    fileread();
+    fileread(); //fileread to read doctor's data for later code
     int validnmc[99];
-    assigndoc(tmp.symptoms, &validnmc);
+    assigndoc(tmp.symptoms, &validnmc); //compare symp. with speciality and give nmc of doctors to validnmc
     int valid = 0;
     while(valid == 0)
     {
@@ -199,7 +176,7 @@ int add() //function for adding patients
     {
         printf("\nNo doctors available or free for your symptoms :(");
         tmp.nmc = -1;
-        break;
+        break; //break out of loop
     }
     printf("\nChoose doctor by typing NMC number: ");
     scanf("%d", &tmp.nmc);
@@ -230,9 +207,9 @@ int add() //function for adding patients
     printf("\nPatient status: Ongoing treatment");
     fprintf(fp, "\n%s %s %s %d %d %d %s %s %s %d %d %d %d %d", tmp.name, tmp.mname, tmp.lname, tmp.year,
             tmp.month, tmp.day, tmp.address, tmp.symptoms, tmp.ph, tmp.gender,
-            tmp.code, tmp.status, tmp.firstime, tmp.nmc);
+            tmp.code, tmp.status, tmp.firstime, tmp.nmc); //append new data at end of the file
     fclose(fp);
-    return 2;
+    return 2; //added new patient
     }
     else
     {
@@ -293,7 +270,7 @@ int add() //function for adding patients
     fileprint(index);
     fclose(fp);
     filewrite();
-    return 1;
+    return 1; //previous patient data modified
     }
   /*while(fscanf(fp, "%s %s %s %d %d %d %s %s %ld %d %d %d %d\n", tmp.name, tmp.mname, tmp.lname, &tmp.year,
             &tmp.month, &tmp.day, tmp.address, tmp.symptoms, &tmp.ph, &tmp.gender,
@@ -304,7 +281,7 @@ int add() //function for adding patients
 */
 
     }
-void print(int index) //print all the info on the pt[index]
+void print() //print all the info on the pt[index]
 {
         //tmp.code = *index + 1000; //for now code is index + 1000 but when file handling it will be previous user code + 1
         char none[99];
@@ -382,10 +359,10 @@ void print(int index) //print all the info on the pt[index]
             printf("\nReferred to: %d[Doctor NMC]", tmp.nmc);
         }
         printf("\nYour code is %d", tmp.code);
-        if(tmp.firstime == 2) //for adding
+        /*if(tmp.firstime == 2) //for adding
         {
             ++index;
-        }
+        }*/
 //        for(int i = 0; i < sizeof())
 }
 

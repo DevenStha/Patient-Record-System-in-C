@@ -1,12 +1,12 @@
 #ifndef MODIFYDOC_H_INCLUDED
 #define MODIFYDOC_H_INCLUDED
 
-void modifydoc(int rm)
+void modifydoc(int rm) //if rm is 1 then remove the doctor
 {
-    int docnmc;
+    int docnmc; //take user input of nmc
     int i;
-    char tmp;
-    int found = -1;
+    char tmp; //for strings
+    int found = -1; //for decision making
     char sp[999];
     strcpy(sp, "");
     char emp[999];
@@ -14,7 +14,7 @@ void modifydoc(int rm)
     int nmc;
     printf("\nEnter doctor's NMC number: ");
     scanf("%d", &docnmc);
-    for(int a = 0; a < 999 && docnmc > -1; a++)
+    for(int a = 0; a < 999 && docnmc > -1; a++) // doctor nmc is -1 when they are deleted so no need to include them
     {
         if(docnmc == d[a].nmc && docnmc > 0)
         {
@@ -98,7 +98,7 @@ void modifydoc(int rm)
         {
             if(d[i].nmc == pt[x].nmc)
             {
-                pt[x].nmc = nmc;
+                pt[x].nmc = nmc; //if nmc of doctor has changed change patient nmc too
                 filewrite();
                 break;
             }
